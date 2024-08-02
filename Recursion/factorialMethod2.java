@@ -13,6 +13,8 @@ public class factorialMethod2 {
 
     public static void main(String[] args) {
         int n = 5;
+        int ans = calFac(n);
+        System.out.println("factorial: " + calFac(n));
     }
 
 }
