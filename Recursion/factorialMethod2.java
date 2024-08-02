@@ -16,5 +16,4 @@ public class factorialMethod2 {
         int ans = calFac(n);
         System.out.println("factorial: " + calFac(n));
     }
-
 }
