@@ -1,6 +1,6 @@
 package BitManipulation;
 
-public class checkBit {
+public class getBit {
     public static void main(String[] args) {
         int num = 9;
         int pos = 2;
