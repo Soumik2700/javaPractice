@@ -16,7 +16,7 @@ public class findSubseq {
     }
 
     public static void main(String[] args) {
-        // calling the recursive function to the new function.
+        // calling the recursive function to the main function.
         subsequences("abcd", 0, "");
     }
 }
