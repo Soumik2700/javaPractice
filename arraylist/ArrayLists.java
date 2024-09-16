@@ -1,6 +1,7 @@
 package arraylist;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ArrayLists {
     public static void main(String[] args) {
@@ -34,5 +35,9 @@ public class ArrayLists {
         // size of list
         int size = list.size();
         System.out.println("List size - " + size);
+
+        // sorting in accending order
+        Collections.sort(list);
+        System.out.println(list);
     }
 }
