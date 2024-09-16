@@ -1,0 +1,30 @@
+class Shape{
+    public void printArea(){
+        System.out.println("Display area: ");
+    }
+}
+//single inheritance
+class Triangle extends Shape{
+    public void printArea(int l, int h){
+        System.out.println(1/2*l*h);
+    }
+}
+//Hierarchical inheritance
+class Circle extends Shape{
+    public void printArea(int r){
+        double area  = Math.PI*r*r;
+        System.out.println(area);
+    }
+}
+// Multi-level inheritance
+class EquilateralTriangle extends Triangle{
+    public void printArea(int l, int h){
+        System.out.println(1/2*l*h);
+    }
+}
+public class typesOfInheritance{
+    public static void main(String[] args){
+        Circle c1 = new Circle();
+        c1.printArea(5);
+    }
+}
