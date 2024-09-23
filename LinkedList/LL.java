@@ -84,6 +84,37 @@ class LL {
         size--; // Decrease size after removing the last node
     }
 
+    // reverse with iteration
+    public void reverseIterate() {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node prevNode = head;
+        Node currNode = head.next;
+        while (currNode != null) {
+            Node nextNode = currNode.next;
+            currNode.next = prevNode;
+
+            // update
+            prevNode = currNode;
+            currNode = nextNode;
+        }
+        head.next = null;
+        head = prevNode;
+    }
+
+    // reverse with recursion
+    public Node reverseRecursion(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        Node newHead = reverseRecursion(head.next);
+        head.next.next = head;
+        head.next = null;
+
+        return newHead;
+    }
+
     // Print the list
     public void printList() {
         Node currNode = head;
@@ -102,24 +133,16 @@ class LL {
     public static void main(String[] args) {
         LL list = new LL();
 
-        // Adding elements to the list
-        list.addFirst("am");
-        list.addFirst("I");
-        list.addLast("Soumik");
-        list.printList(); // Output: I -> am -> Soumik -> null
+        list.addFirst("1");
+        list.addLast("2");
+        list.addLast("3");
+        list.addLast("4");
 
-        // Deleting the first node
+        list.printList();
         System.out.println();
-        list.deleteFirst();
-        list.printList(); // Output: am -> Soumik -> null
+        list.head = list.reverseRecursion(list.head);
+        System.out.println();
+        list.printList();
 
-        // Deleting the last node
-        System.out.println();
-        list.deleteLast();
-        list.printList(); // Output: am -> null
-
-        // Printing the size of the list
-        System.out.println();
-        list.printSize(); // Output: Size of the list: 1
     }
 }

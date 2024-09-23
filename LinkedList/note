@@ -1,0 +1,150 @@
+//single linked list
+
+public class LinkedList{
+    private Node head;
+    private int size;
+    
+    LinkedList(){
+        size = 0;
+    }
+    class Node{
+        String data;
+        Node next;
+        
+        Node(String data){
+            this.data = data;
+            this.next = null;
+            size++;
+        }
+    }
+    //add first
+    public void addFirst(String data){
+        Node newNode = new Node(data);
+        if(head == null){
+            head = newNode;
+            return;
+        }
+        newNode.next = head;
+        head = newNode;
+    }
+    
+    //add last
+    public void addLast(String data){
+        Node newNode = new Node(data);
+        if(head == null){
+            head = newNode;
+            return;
+        }
+        
+        Node currNode = head;
+        while(currNode.next != null){
+            currNode = currNode.next;
+        }
+        currNode.next = newNode;
+    }
+    
+    //delete First
+    public void deleteFirst(){
+        if(head == null){
+            System.out.println("List is empty! Nothing to delete.");
+            return;
+        }else if(head.next == null){
+            head = null;
+            size--;
+            System.out.println("Node removed sucessfully.");
+            return;
+        }else{
+             head = head.next;
+             size--;
+             System.out.println("One node removed.");
+        }
+    }
+    
+    //delete last
+    public void deleteLast() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return; // Return immediately if list is empty
+        }
+
+        // If the list only has one node
+        if (head.next == null) {
+            head = null;
+            size--; // Decrease size for the last remaining node
+            return;
+        }
+
+        // Traverse to the second last node
+        Node secondLastNode = head;
+        Node lastNode = head.next;
+        while (lastNode.next != null) {
+            lastNode = lastNode.next;
+            secondLastNode = secondLastNode.next;
+        }
+
+        secondLastNode.next = null; // Remove reference to the last node
+        size--; // Decrease size after removing the last node
+    }
+    
+    //delete at the specific position
+    public void deleteMiddle(int n){
+        if(head == null){
+            System.out.println("List is empty! Nothing to delete.");
+            return;
+        }else if(head.next == null){
+            head = null;
+            size--;
+            System.out.println("Node removed sucessfully.");
+        }
+        
+        Node prevNode = head;
+        Node currNode = head.next;
+        int i=0;
+        while(i<n-1){
+            
+            currNode = currNode.next;
+            prevNode = prevNode.next;
+            i++;
+        }
+        prevNode.next = currNode.next;
+        size--;
+    }
+    //print list
+    public void printList() {
+        Node currNode = head;
+        while (currNode != null) {
+            System.out.print(currNode.data + " -> ");
+            currNode = currNode.next;
+        }
+        System.out.println("null");
+    }
+    public void printSize(){
+        System.out.println("List size = " + size);
+    }
+    public static void main(String[] args){
+        LinkedList list = new LinkedList();
+        list.addFirst("10");
+        // list.printList();
+        list.addLast("20");
+        list.addLast("30");
+        list.addLast("40");
+        list.addLast("50");
+        list.addLast("60");
+        list.addLast("70");
+        // list.printList();
+        
+        // list.deleteFirst();
+        list.printList();
+        // list.deleteLast();
+        
+        // list.deleteMiddle(3);
+        list.deleteLast();
+        list.printList();
+        list.printSize();
+        
+        list.deleteMiddle(4);
+        list.printList();
+        list.printSize();
+        
+    }
+}
